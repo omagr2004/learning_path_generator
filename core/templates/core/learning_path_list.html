@@ -1,0 +1,11 @@
+<!-- core/templates/core/learning_path_list.html -->
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Learning Paths</h1>
+  <ul>
+    {% for learning_path in learning_paths %}
+      <li><a href="{% url 'learning_path_detail' learning_path.pk %}">{{ learning_path.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,6 +1,15 @@
-{% extends "base_generic.html" %}
+<!-- core/templates/core/home.html -->
+{% extends 'base_generic.html' %}
 
 {% block content %}
-<h2>Welcome to the Personalized Learning Path Generator</h2>
-<p>This is the home page.</p>
+  <h1>Welcome to the Learning Path Generator</h1>
+  {% if user.is_authenticated %}
+    <ul>
+      <li><a href="{% url 'learning_path_list' %}">View Learning Paths</a></li>
+      <li><a href="{% url 'profile' %}">View Profile</a></li>
+      
+    </ul>
+  {% else %}
+    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'signup' %}">signup</a> to continue.</p>
+  {% endif %}
 {% endblock %}
