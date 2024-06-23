@@ -20,8 +20,8 @@ from core.views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/', include('core.urls')),
+    path('', include('core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', home_view, name='home'),# Include auth URLs
+    # Include auth URLs
 ]
 

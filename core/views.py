@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect,get_object_or_404
-from django.contrib.auth import login, authenticate,logout as auth_logout
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm,ProfileForm
 from .models import LearningPath, Course, UserProgress
+
 
 
 def signup_view(request):
@@ -46,15 +47,19 @@ def update_profile_view(request):
         form = ProfileForm(instance=request.user.profile)
     return render(request, 'core/update_profile.html', {'form': form})
 
+
+
 def home_view(request):
     return render(request, 'core/home.html')
 
 # core/views.py
 # core/views.py
 
-def logout_view(request):
-    auth_logout(request)
-    return redirect('home')
+
+# class CustomLogoutView(View):
+#     def get(self, request):
+#         logout(request)s
+#         return redirect('home')
 
 def learning_path_list_view(request):
     learning_paths = LearningPath.objects.all()
